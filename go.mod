@@ -3,6 +3,7 @@ module github.com/felixge/sqlbench
 go 1.16
 
 require (
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/jackc/pgx/v4 v4.8.1
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/montanaflynn/stats v0.6.3

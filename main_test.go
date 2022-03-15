@@ -10,7 +10,7 @@ import (
 
 func setup(t *testing.T) (context.Context, *sql.Conn, func()) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	db, err := sql.Open("pgx", "postgres://")
+	db, err := sql.Open("mysql", "mysql://")
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -16,6 +16,7 @@ import (
 	"strings"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/jackc/pgx/v4/stdlib"
 	"github.com/montanaflynn/stats"
 	"github.com/olekukonko/tablewriter"
@@ -33,7 +34,7 @@ func main() {
 func run() error {
 	var (
 		methodF = flag.String("m", "explain", "Method for measuring the query time. One of: "+queryDurationMethods())
-		connF   = flag.String("c", "postgres://", strings.TrimSpace(`
+		connF   = flag.String("c", "mysql://", strings.TrimSpace(`
 Connection URL or DSN for connecting to PostgreSQL as understood by pgx [1].
 E.g.: postgres://user:secret@localhost:5432/my_db?sslmode=disable
 
@@ -76,7 +77,7 @@ PostgreSQL version.
 		return err
 	}
 
-	db, err := sql.Open("pgx", *connF)
+	db, err := sql.Open("mysql", *connF)
 	if err != nil {
 		return err
 	}
